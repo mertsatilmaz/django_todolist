@@ -1,0 +1,63 @@
+#dropdownMenuButton{
+    color: rgba(255,255,255,.5);
+}
+#dropdownMenuButton:focus{
+    color: #fff;
+}
+#login {
+    color: rgba(255,255,255,.5);
+}
+#login:focus {
+    color: white;
+}
+.container {
+    max-width: 70%;
+}
+#contentcontainer {
+    padding-top: 8%;
+    max-width: 70%;
+}
+.indexelements {
+    padding-top: 10px;
+}
+#orangebutton {
+    color: #FF8C00;
+    border-color: #FF8C00;
+}
+#orangebutton:hover{
+    background-color: #FF8C00;
+    color: #fff;
+}
+.btn {
+    border-width: 1px 1px 6px 1px;
+}
+#exportbutton {
+    float: right;
+}
+.table td, th {
+    text-align: left;
+    padding-right: 50px;
+}
+
+table {
+    width: 100%;
+    margin-top: 60px;
+}
+
+.pagination {
+    margin-top: 25px;
+    margin-bottom: 100px;
+}
+.page-link {
+    background-color: #eeeeee;
+}
+
+#chart {
+    margin: 80px auto;
+}
+
+#booleantrick{
+    border-radius: 10px 10px 10px 10px;
+    padding: 3px;
+}
+

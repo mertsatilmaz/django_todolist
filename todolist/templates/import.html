@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div>
+            <strong>{{message|safe}}</strong>
+        </div>
+    {% endfor %}
+{% else %}
+<h3>{{order}}</h3>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <br>
+    <h5><label>Upload a file:</label></h5>
+    <input type="file" name="file">
+    <button type="submit">Upload</button>
+</form>
+{% endif %}
+{% endblock %}

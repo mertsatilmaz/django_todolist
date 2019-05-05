@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="jumbotron text-center">
+
+        <h1 class="card-title h4 pb-2"><strong>{{user.username}}'s</strong> Profile</h1>
+    
+</div>
+<div class="card">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Username: {{user.username}}</li>
+      <li class="list-group-item">Name: {{user.first_name}}</li>
+      <li class="list-group-item">Surname: {{user.last_name}}</li>
+      <li class="list-group-item">Email: {{user.email}}</li>
+    </ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<form method="post">{% csrf_token %}
+    <h4>Please create a todo from below!</h4>
+    <div>{{form.text}}</div>
+    <div><h6>Is completed: </h6>{{form.is_completed}}</div>
+    <br>
+    <input type="submit" value="Save">
+</form>
+
+{% endblock %}

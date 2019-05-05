@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <div class="card bg-light mb-3">
+      <div class="card-header">{{object.created_time}}</div>
+      <div class="card-body">
+      <h5 class="card-title">{{object.user}}</h5>
+        <p class="card-text">{{object.text}}</p>
+      </div>  
+    </div>
+    
+{% endblock %}

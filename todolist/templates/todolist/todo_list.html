@@ -1,0 +1,76 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Todo App</h1>
+    {% if user.is_authenticated %}
+    <p class="indexelements"><font size="+1">A simple todo app</font></p>
+    <div class="indexelements">
+        <a href="{% url 'todo-create'%}"><button type="button" class="btn btn-outline-success"><font size="-1"><strong>CREATE</strong></font></button></a>
+        <a href="{% url 'todo-upload'%}"><button type="button" class="btn btn-outline-warning" id="orangebutton"><font size="-1"><strong>IMPORT</strong></font></button></a>
+        <a href="{% url 'export'%}"><font size="-1"><button type="button" class="btn btn-outline-dark" id="exportbutton"><strong>EXPORT</strong></font></button></a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+            
+                <th scope="col" style="padding:15px; padding-right:50px;">User</th>
+                <th scope="col" style="padding:15px; padding-right:50px;">Todo</th>
+                <th scope="col" style="padding:15px; padding-right:50px;">Status</th>
+                <th scope="col" style="padding:15px; padding-right:50px;">Created</th>
+                <th scope="col" style="padding:15px; padding-right:50px;">Updated</th>
+                <th scope="col" style="padding:15px; padding-right:50px;">Operation</th>
+            
+            </tr>
+        </thead>
+        {% if messages %}
+            {% for message in messages %}
+                <br>
+                <p style="float: right;">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+        {% if todo_list %}
+        <tbody>
+            {% for todo in todo_list %}
+            <tr>
+                <td style="padding:15px; padding-right:50px;"><strong>{{todo.user}}</strong></td>
+                <td style="padding:15px; padding-right:50px;">{{todo.text}}</td>
+                {% if todo.is_completed %}
+                    <td style="padding:15px; padding-right:50px;"><span id="booleantrick" style="background-color:rgb(35, 182, 48); color:white;"><font size="-1"><strong>Completed</strong></font></span></td>
+                {% else %}
+                    <td style="padding:15px; padding-right:50px;"><span id="booleantrick" style="background-color:#eeeeee;"><font size="-1"><strong>Not Completed</strong></font></span></td>
+                {% endif %}
+                <td style="padding:15px; padding-right:70px;">{{todo.created_time}}</td>
+                <td style="padding:15px; padding-right:70px;">{{todo.last_updated}}</td>
+                <td style="padding:15px;">
+                    <div style="display:flex;">
+                        <form action="{% url 'complete_todo' %}" method="POST">
+                            {% csrf_token %}        
+                            {% if todo.is_completed %}
+                                <button type="submit" class="btn btn-secondary" name="todo_id" value="{{todo.id}}" style="margin-right:2px;"><strong>UNCOMPLETE</strong></button>
+                            {% else %}
+                                <button type="submit" class="btn btn-info" name="todo_id" value="{{todo.id}}" style="margin-right:2px;"><strong>COMPLETE</strong></button>
+                            {% endif %}
+                        </form>
+                        <form action="{% url 'todo-delete' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger" name="todo_id" value="{{todo.id}}"><strong>DELETE</strong></button>
+                        </form>                    
+                    </div>
+
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>Sadly, there are no todos.</td>
+            </tr>
+        </tbody>
+        {% endif %}
+    </table>
+    {% else %}
+        <br>
+        <p>You need to be logged in to see the content!</p>
+    {% endif %}
+
+                     
+{% endblock %}
