@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '97it(wis3c#r*%x3te#u5tihgv03^7
 #DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['hidden-ridge-91738.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
