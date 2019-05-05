@@ -36,27 +36,28 @@
                             </li>
                         {% endif %}
                     </ul>
-                    {% if user.is_authenticated %} 
-                    
-                    <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          {{ user.get_username }}
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="{% url 'view_profile' %}">Profile</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="{% url 'logout'%}">Logout</a>
-                        </div>
-                    </div>
-                    {% else %}
-                    <div>
+                    <ul class="navbar-nav ml-auto">
+                        {% if user.is_authenticated %} 
+                        <li class="nav-item dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ user.get_username }}
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{% url 'view_profile' %}">Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout'%}">Logout</a>
+                              </div>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
                             {% if request.path == '/accounts/login/' %}          
                                 <a class="nav-link" id="login" href="{% url 'login' %}" style="color:white;">Login</a>
                             {% else %}
                                 <a class="nav-link" id="login" href="{% url 'login' %}">Login</a>
                             {% endif %}
-                    </div>
-                    {% endif%}
+                        </li>
+                        {% endif%}
+                    </ul>
                 </div>
             </div>
         </nav>
