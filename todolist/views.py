@@ -56,7 +56,7 @@ def todo_upload(request):
             )
     
         context = {}
-        return render(request, 'import.html', context)
+        return HttpResponseRedirect("/")
     except Exception as e:
      	logging.getLogger("error_logger").error("Unable to upload file. "+repr(e))
      	messages.error(request,"Unable to upload file. "+repr(e))
@@ -143,21 +143,16 @@ def delete_todo(request):
 @login_required
 def complete_todo(request):
     todo = get_object_or_404(Todo, id=request.POST.get('todo_id'))
-    print(todo)
     if todo.user == request.user:
-        print("checked user")
         if todo.is_completed:
             
             todo.is_completed = not todo.is_completed
             todo.save()
-            print("todo is false now")
         else:
             
             todo.is_completed = not todo.is_completed
             todo.save()
-            print("todo is true now")
     else:
         messages.info(request, '*Not Allowed')
-        print('No permissions')
 
     return HttpResponseRedirect("/")
