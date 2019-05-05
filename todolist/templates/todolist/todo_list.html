@@ -4,10 +4,10 @@
     <h1>Todo App</h1>
     {% if user.is_authenticated %}
     <p class="indexelements"><font size="+1">A simple todo app</font></p>
-    <div class="indexelements">
-        <a href="{% url 'todo-create'%}"><button type="button" class="btn btn-outline-success"><font size="-1"><strong>CREATE</strong></font></button></a>
-        <a href="{% url 'todo-upload'%}"><button type="button" class="btn btn-outline-warning" id="orangebutton"><font size="-1"><strong>IMPORT</strong></font></button></a>
-        <a href="{% url 'export'%}"><font size="-1"><button type="button" class="btn btn-outline-dark" id="exportbutton"><strong>EXPORT</strong></font></button></a>
+    <div class="d-flex">
+        <div><a href="{% url 'todo-create'%}"><button type="button" class="btn btn-outline-success"><font size="-1"><strong>CREATE</strong></font></button></a></div>
+        <div style="margin-left: 5px; margin-right: 5px;"><a href="{% url 'todo-upload'%}"><button type="button" class="btn btn-outline-warning" id="orangebutton"><font size="-1"><strong>IMPORT</strong></font></button></a></div>
+        <div class="ml-auto"><a href="{% url 'export'%}"><button type="button" class="btn btn-outline-dark" id="exportbutton"><font size="-1"><strong>EXPORT</strong></font></button></a></div>
     </div>
     <table class="table">
         <thead>

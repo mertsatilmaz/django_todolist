@@ -1,7 +1,6 @@
 body {
     padding-top: 50px;
 }
-
 #dropdownMenuButton{
     color: rgba(255,255,255,.5);
 }
@@ -34,9 +33,6 @@ body {
 }
 .btn {
     border-width: 1px 1px 6px 1px;
-}
-#exportbutton {
-    float: right;
 }
 .table td, th {
     text-align: left;
