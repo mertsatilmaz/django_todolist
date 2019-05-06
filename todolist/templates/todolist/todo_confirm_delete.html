@@ -1,9 +1,10 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <form method="post">{% csrf_token %}
-        <p>Are you sure you want to delete "{{ object }}"?</p>
-        <input type="submit" value="Confirm">
+    <form action="delete/api" method="post">{% csrf_token %}
+        <p>Are you sure you want to delete "{{ todo }}"?</p>
+        <input type="hidden" name="todo_id" value="{{todo.id}}">
+        <input type="submit" name="Confirm" value="Confirm">
     </form>
 
 {% endblock %}

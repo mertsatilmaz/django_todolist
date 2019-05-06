@@ -12,5 +12,6 @@ urlpatterns = [
     path('todo/new', views.TodoCreateView.as_view(), name='todo-create'),
     path('todo/<int:pk>', views.TodoDetailView.as_view(), name='particulartodo'),
     path('todo/delete', views.delete_todo, name='todo-delete'),
+    path('todo/delete/api', views.delete_it),
     path('todo/complete', views.complete_todo, name="complete_todo"),
 ]

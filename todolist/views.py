@@ -132,13 +132,20 @@ def delete_todo(request):
     todo = get_object_or_404(Todo, id=request.POST.get('todo_id'))
 
     if todo.user == request.user:
-        todo.delete()
+        #todo.delete()
+        context = {"todo":todo}
+        return render(request, 'todolist/todo_confirm_delete.html', context)
 
     else:
         messages.info(request, '*Not Allowed')
 
     return HttpResponseRedirect("/")
 
+@login_required
+def delete_it(request):
+    todo = get_object_or_404(Todo, id=request.POST.get('todo_id'))
+    todo.delete()
+    return HttpResponseRedirect("/")
 
 @login_required
 def complete_todo(request):
