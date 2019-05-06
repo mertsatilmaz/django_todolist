@@ -144,7 +144,12 @@ def delete_todo(request):
 @login_required
 def delete_it(request):
     todo = get_object_or_404(Todo, id=request.POST.get('todo_id'))
-    todo.delete()
+
+    if todo.user == request.user:
+        todo.delete()
+        
+    else:
+        messages.info(request, '*Not Allowed')
     return HttpResponseRedirect("/")
 
 @login_required
